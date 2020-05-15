@@ -1,0 +1,76 @@
+//SIZZLET OpenFileFromComp
+//
+// Example script to open an image sequence
+//
+
+
+obj = Scene.activeObj
+shot = obj.shot
+prep = shot.live
+argv = Scene.ARGV
+
+
+for (i = 1; i <= #argv; i++)
+    cmd = argv[i]
+
+    if (cmd == "+file")
+	shot.nm = argv[++i]
+		// sets up shot.length and shot.stop automatically
+
+	len = shot.actualLength		
+	if (len > 300)
+	    len = 300		
+	end
+	shot.queueLength = shot.actualLength
+    elseif (cmd == "+aspect")
+	shot.aspect = argv[++i]
+    elseif (cmd == "+cubic")
+	prep.cubic = argv[++i];
+    elseif (cmd == "+distort")
+	prep.distort = argv[++i]
+    elseif (cmd == "+lens")
+	prep.lensPresetName = argv[++i]
+    elseif (cmd == "+plate")
+	shot.rawBackPlateWidth = argv[++i]
+    elseif (cmd == "+queue")
+	shot.queueLength = argv[++i]
+    elseif (cmd == "+rate")
+	shot.rate = argv[++i]
+    elseif (cmd == "+start")
+	shot.start = argv[++i]
+    elseif (cmd == "+stop")
+	shot.stop = argv[++i]
+	elseif (cmd == "+blur")
+	prep.blur = argv[++i]
+	hiPassImport = 1
+	elseif (cmd == "+hipass")
+	prep.hipass = argv[++i]
+	elseif (cmd == "+low")
+	prep.hue = argv[++i] 
+	low = prep.hue            // syntheyes sees this as a string, and can't convert to number
+	elseif (cmd == "+mid")	  // so i tricked it by passing the value to "hue", where it becomes a number and i pass it back
+	prep.hue = argv[++i] 	  // super annoying
+	mid = prep.hue 
+	elseif (cmd == "+high")
+	prep.hue = argv[++i] 
+	high = prep.hue
+	prep.levels = Vector(low, mid, high)
+	shot.processFormat = 1
+	shot.storeFormat = 0
+	prep.hue = 0
+    else
+	Message("unknown argument " cmd)
+    end
+end
+
+//obj.Save("test16.sni")
+
+
+// Do this at the end, to cause a bunch of User-interface things
+//	to reload/reset to match the new shot.
+
+Scene.activeObj = obj
+shot.Flush()
+
+
+
