@@ -8,7 +8,7 @@ If you'd like to automatically have a hi-pass filter applied for easier tracking
 <b>INSTALLATION:</b> 
 
 In your After Effects preferences, under "Scripting & Expressions" tab,
-make sure the checkbox is selected for "Allow Scripts to Write Files and Access Network".
+make sure the checkbox is selected for <b>"Allow Scripts to Write Files and Access Network"</b>.
 
 For <b>WINDOWS</b> users, copy the AE2Synth script into this folder:
 
