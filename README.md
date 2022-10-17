@@ -4,7 +4,9 @@ AE2Synth is the easy way to send your shot from After Effects to Syntheyes.
 
 Press the "Send" button and Syntheyes will open with the footage imported and ready to track. 
 
-If you'd like to automatically have a hi-pass filter applied for easier tracking, that's possible too. And you can save your favorite hi-pass preset so your shots always have it applied on import.
+If you'd like to automatically have a hi-pass filter applied for easier tracking, that's possible too. 
+
+And you can save your favorite hi-pass preset so your shots always have it applied on import.
 
 
 <b>INSTALLATION:</b> 
